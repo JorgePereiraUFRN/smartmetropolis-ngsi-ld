@@ -11,7 +11,7 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.geotools.ows.ServiceException;
 
-import br.imd.sgeol.datasource.service.GenericService;
+import br.imd.sgeol.datasource.service.EntityService;
 import br.imd.sgeol.exception.DaoException;
 import br.imd.sgeol.exception.EntityDoesNotExistException;
 import br.imd.sgeol.exception.ObjectNullException;
@@ -26,17 +26,17 @@ import br.imd.sgeol.util.EntitySerializer;
 
 public abstract class GenericResource {
 
-	protected final GenericService genericService;
+	protected final EntityService entityService;
 	protected static final EntitySerializer ENTITY_SERIALIZER = new EntitySerializer();
 
-	public GenericResource(final GenericService genericService) {
-		this.genericService = genericService;
+	public GenericResource(final EntityService genericService) {
+		this.entityService = genericService;
 	}
 
 	protected Response addProperty(String entityId, String property, String propertyId) {
 
 		try {
-			genericService.addProperty(entityId, ENTITY_SERIALIZER.jsonToProperty(property),
+			entityService.addProperty(entityId, ENTITY_SERIALIZER.jsonToProperty(property),
 					propertyId);
 
 			return Response.ok().build();
@@ -60,7 +60,7 @@ public abstract class GenericResource {
 	protected Response updateProperty(String entityId, String property, String propertyId) {
 
 		try {
-			genericService.updateProperty(entityId, ENTITY_SERIALIZER.jsonToProperty(property),
+			entityService.updateProperty(entityId, ENTITY_SERIALIZER.jsonToProperty(property),
 					propertyId);
 			return Response.ok().build();
 
@@ -83,7 +83,7 @@ public abstract class GenericResource {
 	protected Response removeProperty(String entityId, String propertyName) {
 
 		try {
-			genericService.removeProperty(entityId, propertyName);
+			entityService.removeProperty(entityId, propertyName);
 			return Response.ok().build();
 		} catch (SgeolServiceException e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
@@ -97,7 +97,7 @@ public abstract class GenericResource {
 
 		try {
 
-			Property property = genericService.findProperty(entityId, propertyName);
+			Property property = entityService.findProperty(entityId, propertyName);
 
 			if (property != null) {
 				return Response.ok(property.toJsonObject().toString(), MediaType.APPLICATION_JSON).build();
@@ -119,7 +119,7 @@ public abstract class GenericResource {
 			String relationaship) {
 
 		try {
-			genericService.addRelationaship(entityId, relationashipName,
+			entityService.addRelationaship(entityId, relationashipName,
 					ENTITY_SERIALIZER.jsonToRelationaship(relationaship));
 
 			return Response.ok().build();
@@ -140,7 +140,7 @@ public abstract class GenericResource {
 			String relationaship) {
 
 		try {
-			genericService.updateRelationaship(entityId, relationashipName,
+			entityService.updateRelationaship(entityId, relationashipName,
 					ENTITY_SERIALIZER.jsonToRelationaship(relationaship));
 			return Response.ok().build();
 
@@ -159,7 +159,7 @@ public abstract class GenericResource {
 	protected Response removeRelationaship(String entityId, String relationashipName) {
 
 		try {
-			genericService.removeRelationaship(entityId, relationashipName);
+			entityService.removeRelationaship(entityId, relationashipName);
 			return Response.ok().build();
 
 		} catch (SgeolServiceException e) {
@@ -173,7 +173,7 @@ public abstract class GenericResource {
 	protected Response findRelationaship(String entityId, String relationashipName) {
 
 		try {
-			Relationaship relationaship = genericService.findRelationaship(entityId, relationashipName);
+			Relationaship relationaship = entityService.findRelationaship(entityId, relationashipName);
 
 			if (relationaship != null) {
 				return Response.ok(relationaship.toJson().toString(), MediaType.APPLICATION_JSON).build();
@@ -193,7 +193,7 @@ public abstract class GenericResource {
 	protected Response addContext(String entityId, String context) {
 
 		try {
-			genericService.addContext(entityId, context);
+			entityService.addContext(entityId, context);
 
 			return Response.ok().build();
 		} catch (SgeolServiceException e) {
@@ -209,7 +209,7 @@ public abstract class GenericResource {
 	protected Response removeContext(String entityId, String context) {
 
 		try {
-			genericService.removeContext(entityId, context);
+			entityService.removeContext(entityId, context);
 			return Response.ok().build();
 		} catch (SgeolServiceException e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
@@ -221,7 +221,7 @@ public abstract class GenericResource {
 			int limit, int offset) {
 
 		try {
-			List<Entity> entities = genericService.findByPropertyFilter(field, operator, value, limit,
+			List<Entity> entities = entityService.findByPropertyFilter(field, operator, value, limit,
 					offset);
 
 			JSONArray array = new JSONArray();
@@ -248,7 +248,7 @@ public abstract class GenericResource {
 			int limit, int offset) {
 
 		try {
-			List<Entity> entities = genericService.findByRelationashipByFilter(field, operator, value,
+			List<Entity> entities = entityService.findByRelationashipByFilter(field, operator, value,
 					limit, offset);
 
 			JSONArray array = new JSONArray();
@@ -272,7 +272,7 @@ public abstract class GenericResource {
 	protected Response findAll(int limit, int offset) {
 
 		try {
-			List<Entity> entities = genericService.findAll(limit, offset);
+			List<Entity> entities = entityService.findAll(limit, offset);
 
 			JSONArray array = new JSONArray();
 
@@ -300,7 +300,7 @@ public abstract class GenericResource {
 
 	public Response findByQuery( String query, int limit, int offset) {
 		try {
-			List<Entity> entities = genericService.findByQuery(query, limit, offset);
+			List<Entity> entities = entityService.findByQuery(query, limit, offset);
 
 			JSONArray array = new JSONArray();
 
@@ -330,7 +330,7 @@ public abstract class GenericResource {
 	public Response findByDocumentQuery(String document, int limit, int offset) {
 
 		try {
-			List<Entity> entities = genericService.findByDocumentQuery(document, limit, offset);
+			List<Entity> entities = entityService.findByDocumentQuery(document, limit, offset);
 
 			JSONArray array = new JSONArray();
 
