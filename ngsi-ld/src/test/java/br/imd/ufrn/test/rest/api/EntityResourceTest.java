@@ -26,11 +26,11 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import br.imd.sgeol.model.Entity;
-import br.imd.sgeol.model.Geometry;
-import br.imd.sgeol.model.Property;
-import br.imd.sgeol.model.PropertyType;
-import br.imd.sgeol.model.Relationaship;
+import br.imd.ngsi_ld.model.Entity;
+import br.imd.ngsi_ld.model.Geometry;
+import br.imd.ngsi_ld.model.Property;
+import br.imd.ngsi_ld.model.PropertyType;
+import br.imd.ngsi_ld.model.Relationaship;
 import io.restassured.RestAssured;
 
 public class EntityResourceTest {

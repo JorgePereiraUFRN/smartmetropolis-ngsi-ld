@@ -11,7 +11,7 @@
     <init-param>
       <description>Multiple packages, separated by semicolon(;), can be specified in param-value</description>
       <param-name>com.sun.jersey.config.property.packages</param-name>
-      <param-value>br.imd.sgeol.datasource.resouces</param-value>
+      <param-value>br.imd.ngsi_ld.resouces</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
