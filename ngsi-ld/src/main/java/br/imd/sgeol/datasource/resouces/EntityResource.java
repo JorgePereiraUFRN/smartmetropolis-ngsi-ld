@@ -31,7 +31,7 @@ import br.imd.sgeol.exception.ObjectNullException;
 import br.imd.sgeol.exception.SgeolServiceException;
 import br.imd.sgeol.model.Entity;
 
-@Path("/ngsi-ld")
+@Path("/smartmetropolis")
 public class EntityResource extends GenericResource {
 
 	private static final EntityService SERVICE = EntityService.getInstance();
