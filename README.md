@@ -37,7 +37,7 @@
   "nota_portugues" : {"type":"Property","value":"8"},  
   "nota_matematica" : {"type":"Property","value":"9"},  
   "location" : {"type":"GeoProperty","value":{"coordinates":["10","30"],"type":"Point"}},  
-  "escola" : {"type":"Relationaship","object":"urn:ngsi-ld:escola:12345567"}  
+  "escola" : {"type":"Relationship","object":"urn:ngsi-ld:escola:12345567"}  
 }
 
 
@@ -53,7 +53,7 @@
   "nota_matematica" : {"type":"Property","value":"value1"},  
   `"frequencia_de_aula" : {"type":"Property","value":"95"},`    
   "location" : {"type":"GeoProperty","value":{"coordinates":["10","30"],"type":"Point"}},  
-  "escola" : {"type":"Relationaship","object":"urn:ngsi-ld:escola:12345567"}  
+  "escola" : {"type":"Relationship","object":"urn:ngsi-ld:escola:12345567"}  
 }
 
 #### 3 - Query a entity by id
