@@ -8,9 +8,9 @@
 | :---:| :------------: | :------------ | :------------ | :------------ |
 | 1 |POST | /ngsi-ld/ws/smartmetropolis | Save a new entity |  json-ld representation of the entity|
 | 2 |PUT | /ngsi-ld/ws/smartmetropolis | Update a entity|  json-ld representation of the entity|
-| 3 |GET | /ngsi-ld/ws/smartmetropolis/find-by-id?entity-id=`{entity-id}` | Query a entity with id `{id da entidade}` | |
+| 3 |GET | /ngsi-ld/ws/smartmetropolis/find-by-id?entity-id=`{entity-id}` | Query a entity with id `{entity id}` | |
 | 4 |GET | /ngsi-ld/ws/smartmetropolis?limit=`{limit}`&offset=`{offset}` | Query multiple entities. The values for limit and offset are optionals.| |
-| 5 |DELETE | /ngsi-ld/ws/smartmetropolis/?entity-id=`{entity id}` | Delete a entity with id`{id da entidade}` | |
+| 5 |DELETE | /ngsi-ld/ws/smartmetropolis/?entity-id=`{entity id}` | Delete a entity with id`{entity id}` | |
 | 6 |POST| /ngsi-ld/ws/smartmetropolis/property?entity-id=`{entity id}`&property-name=`{property name}`| Insert a new property in an entity| Json representations of the property.|
 | 7 |PUT| /ngsi-ld/ws/smartmetropolis/property?entity-id=`{entity id}`&property-name=`{property name}` | Update an property of an entity | Json representation os the property|
 | 8 |GET| /ngsi-ld/ws/smartmetropolis/property?entity-id=`{entity id}`&property-name=`{property name}` | Query an propterty ||
@@ -83,7 +83,7 @@
 
 `GET` http://localhost:8080/ngsi-ld/ws/smartmetropolis/property?entity-id=urn:ngsi-ld:aluno:d8c1f8aa-6f12-4c3a-b318-593c13c61485&property-name=nota_geografia
 
-#### 9 - Deletar uma propriedade pertencente a uma entidade
+#### 9 - Delete a property
 
 `DELETE` http://localhost:8080/ngsi-ld/ws/smartmetropolis/property?entity-id=urn:ngsi-ld:aluno:d8c1f8aa-6f12-4c3a-b318-593c13c61485&property-name=nota_geografia
 
